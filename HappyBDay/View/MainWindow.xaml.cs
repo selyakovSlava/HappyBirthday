@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HappyBDay.Dialogs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,7 +24,10 @@ namespace HappyBDay
         {
             InitializeComponent();
 
-            this.DataContext = new ViewModel.Persons();
+            //this.DataContext = new ViewModel.Persons();
+
+            /* Добавили работу с диалоговомыи окнами */
+            this.DataContext = new ViewModel.Persons(new DefaultDialogService(), new JsonFileService());
         }
     }
 }

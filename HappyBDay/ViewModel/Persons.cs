@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HappyBDay.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -111,6 +112,72 @@ namespace HappyBDay.ViewModel
                     }));
             }
         }
+
+        public Persons(IDialogService dialogService, IFileService fileService)
+        {
+            this.dialogService = dialogService;
+            this.fileService = fileService;
+
+            People = new ObservableCollection<Model.Person>();
+            LoadPersons();
+        }
+
+        IFileService fileService;
+        IDialogService dialogService;
+
+        // команда сохранения файла
+        private RelayCommand saveCommand;
+        public RelayCommand SaveCommand
+        {
+            get
+            {
+                return saveCommand ??
+                  (saveCommand = new RelayCommand(obj =>
+                  {
+                      try
+                      {
+                          if (dialogService.SaveFileDialog() == true)
+                          {
+                              fileService.Save(dialogService.FilePath, People.ToList());
+                              dialogService.ShowMessage("Файл сохранен");
+                          }
+                      }
+                      catch (Exception ex)
+                      {
+                          dialogService.ShowMessage(ex.Message);
+                      }
+                  }));
+            }
+        }
+
+        // команда открытия файла
+        private RelayCommand openCommand;
+        public RelayCommand OpenCommand
+        {
+            get
+            {
+                return openCommand ??
+                  (openCommand = new RelayCommand(obj =>
+                  {
+                      try
+                      {
+                          if (dialogService.OpenFileDialog() == true)
+                          {
+                              var phones = fileService.Open(dialogService.FilePath);
+                              People.Clear();
+                              foreach (var p in phones)
+                                  People.Add(p);
+                              dialogService.ShowMessage("Файл открыт");
+                          }
+                      }
+                      catch (Exception ex)
+                      {
+                          dialogService.ShowMessage(ex.Message);
+                      }
+                  }));
+            }
+        }
+
 
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged(string prop = "")

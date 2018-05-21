@@ -8,7 +8,14 @@
         xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <ListBox Name="listPeople" HorizontalAlignment="Left" Margin="10,10,0,50" Width="222" 
+        <Menu Height="25" VerticalAlignment="Top">
+            <MenuItem Header="Файл">
+                <MenuItem Header="Открыть" Command="{Binding OpenCommand}" />
+                <MenuItem Header="Сохранить" Command="{Binding SaveCommand}" />
+            </MenuItem>
+        </Menu>
+
+        <ListBox Name="listPeople" HorizontalAlignment="Left" Margin="10,30,0,50" Width="222" 
                  ItemsSource="{Binding People}" 
                  SelectedItem="{Binding SelectedPerson}" Background="#FFE9F4F9">
             <ListBox.ItemTemplate>
@@ -25,7 +32,7 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Grid Margin="237,10,10,50" Background="AliceBlue" DataContext="{Binding SelectedPerson}">
+        <Grid Margin="237,30,10,50" Background="AliceBlue" DataContext="{Binding SelectedPerson}">
             <Label Content="Выбранный пользователь:" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top"/>
             <Label Content="Фамилия" HorizontalAlignment="Left" Margin="10,31,0,0" VerticalAlignment="Top"/>
             <TextBox HorizontalAlignment="Left" Height="26" Margin="75,31,0,0" TextWrapping="Wrap" Text="{Binding Surname, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" VerticalAlignment="Top" Width="250"/>
