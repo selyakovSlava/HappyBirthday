@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HappyBDay"
         mc:Ignorable="d"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <ListBox Name="listPeople" HorizontalAlignment="Left" Margin="10,10,0,50" Width="222" 
@@ -38,6 +39,13 @@
 
         <Button Name="addButton" Content="Add" Command="{Binding AddCommand}" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" Width="60" Height="35"/>
         <Button Name="removeButton" Content="Remove" Command="{Binding RemoveCommand}" CommandParameter="{Binding SelectedPerson}" HorizontalAlignment="Left" Margin="75,0,0,10" VerticalAlignment="Bottom" Width="60" Height="35"/>
+        <Button Name="copyButton" Content="Copy" Margin="140,0,0,10" VerticalAlignment="Bottom" Height="35" HorizontalAlignment="Left" Width="76">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseDoubleClick">
+                    <i:InvokeCommandAction Command="{Binding DoubleCommand}" CommandParameter="{Binding SelectedPerson}" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </Button>
 
     </Grid>
 </Window>

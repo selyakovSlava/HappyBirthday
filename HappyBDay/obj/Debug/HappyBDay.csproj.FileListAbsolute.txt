@@ -12,3 +12,15 @@ F:\Селяков В.А\Личное\Мои проекты\Оповещение 
 F:\Селяков В.А\Личное\Мои проекты\Оповещение ДР\HappyBDay\HappyBDay\obj\Debug\HappyBDay.pdb
 F:\Селяков В.А\Личное\Мои проекты\Оповещение ДР\HappyBDay\HappyBDay\obj\Debug\View\MainWindow.g.cs
 F:\Селяков В.А\Личное\Мои проекты\Оповещение ДР\HappyBDay\HappyBDay\obj\Debug\View\MainWindow.baml
+F:\Селяков В.А\Личное\Мои проекты\Оповещение ДР\HappyBDay\HappyBDay\bin\Debug\System.Windows.Interactivity.dll
+F:\Селяков В.А\Личное\Мои проекты\Оповещение ДР\HappyBDay\HappyBDay\bin\Debug\System.Windows.Interactivity.xml
+F:\Селяков В.А\Личное\Мои проекты\Оповещение ДР\HappyBDay\HappyBDay\bin\Debug\de\System.Windows.Interactivity.resources.dll
+F:\Селяков В.А\Личное\Мои проекты\Оповещение ДР\HappyBDay\HappyBDay\bin\Debug\en\System.Windows.Interactivity.resources.dll
+F:\Селяков В.А\Личное\Мои проекты\Оповещение ДР\HappyBDay\HappyBDay\bin\Debug\es\System.Windows.Interactivity.resources.dll
+F:\Селяков В.А\Личное\Мои проекты\Оповещение ДР\HappyBDay\HappyBDay\bin\Debug\fr\System.Windows.Interactivity.resources.dll
+F:\Селяков В.А\Личное\Мои проекты\Оповещение ДР\HappyBDay\HappyBDay\bin\Debug\it\System.Windows.Interactivity.resources.dll
+F:\Селяков В.А\Личное\Мои проекты\Оповещение ДР\HappyBDay\HappyBDay\bin\Debug\ja\System.Windows.Interactivity.resources.dll
+F:\Селяков В.А\Личное\Мои проекты\Оповещение ДР\HappyBDay\HappyBDay\bin\Debug\ko\System.Windows.Interactivity.resources.dll
+F:\Селяков В.А\Личное\Мои проекты\Оповещение ДР\HappyBDay\HappyBDay\bin\Debug\zh-Hans\System.Windows.Interactivity.resources.dll
+F:\Селяков В.А\Личное\Мои проекты\Оповещение ДР\HappyBDay\HappyBDay\bin\Debug\zh-Hant\System.Windows.Interactivity.resources.dll
+F:\Селяков В.А\Личное\Мои проекты\Оповещение ДР\HappyBDay\HappyBDay\obj\Debug\HappyBDay.csproj.CopyComplete

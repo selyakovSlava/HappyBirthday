@@ -84,6 +84,34 @@ namespace HappyBDay.ViewModel
             }
         }
 
+        private RelayCommand doubleCommand;
+        /// <summary>
+        /// Команда на дублирование.
+        /// </summary>
+        public RelayCommand DoubleCommand
+        {
+            get
+            {
+                return doubleCommand ??
+                    (doubleCommand = new RelayCommand(obj =>
+                    {
+                        Model.Person person = obj as Model.Person;
+                        if (person != null)
+                        {
+                            Model.Person personCopy = new Model.Person
+                            {
+                                ID = People.Count + 1,
+                                Name = person.Name,
+                                Patronymic = person.Patronymic,
+                                Surname = person.Surname,
+                                BDay = person.BDay
+                            };
+                            People.Insert(0, personCopy);
+                        }
+                    }));
+            }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged(string prop = "")
         {
