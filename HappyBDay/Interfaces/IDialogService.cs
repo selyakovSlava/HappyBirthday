@@ -1,15 +1,33 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿
 
 namespace HappyBDay.Interfaces
 {
+    /// <summary>
+    /// Интерфейс для работы с диалоговыми окнами.
+    /// </summary>
     public interface IDialogService
     {
-        void ShowMessage(string message);   // показ сообщения
-        string FilePath { get; set; }   // путь к выбранному файлу
-        bool OpenFileDialog();  // открытие файла
-        bool SaveFileDialog();  // сохранение файла
+        /// <summary>
+        /// Показать сообщение.
+        /// </summary>
+        /// <param name="message"></param>
+        void ShowMessage(string message);
+
+        /// <summary>
+        /// Путь к выбранному файлу.
+        /// </summary>
+        string FilePath { get; set; }
+
+        /// <summary>
+        /// Открыть файл.
+        /// </summary>
+        /// <returns></returns>
+        bool OpenFileDialog();
+
+        /// <summary>
+        /// Сохранить файл.
+        /// </summary>
+        /// <returns></returns>
+        bool SaveFileDialog();
     }
 }

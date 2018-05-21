@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows;
+﻿using System.Windows;
 using HappyBDay.Interfaces;
 using Microsoft.Win32;
 
@@ -10,8 +6,15 @@ namespace HappyBDay.Dialogs
 {
     public class DefaultDialogService : IDialogService
     {
+        /// <summary>
+        /// Путь к файлу.
+        /// </summary>
         public string FilePath { get; set; }
 
+        /// <summary>
+        /// Диалог на открытие файла.
+        /// </summary>
+        /// <returns></returns>
         public bool OpenFileDialog()
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -23,6 +26,10 @@ namespace HappyBDay.Dialogs
             return false;
         }
 
+        /// <summary>
+        /// Диалог на сохранение файла.
+        /// </summary>
+        /// <returns></returns>
         public bool SaveFileDialog()
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
@@ -34,6 +41,10 @@ namespace HappyBDay.Dialogs
             return false;
         }
 
+        /// <summary>
+        /// Показать сообщение.
+        /// </summary>
+        /// <param name="message"></param>
         public void ShowMessage(string message)
         {
             MessageBox.Show(message);

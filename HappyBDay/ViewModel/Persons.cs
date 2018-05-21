@@ -1,10 +1,8 @@
 ﻿using HappyBDay.Interfaces;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
-using System.Text;
 
 namespace HappyBDay.ViewModel
 {
@@ -149,7 +147,6 @@ namespace HappyBDay.ViewModel
                   }));
             }
         }
-
         // команда открытия файла
         private RelayCommand openCommand;
         public RelayCommand OpenCommand
