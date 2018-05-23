@@ -6,18 +6,135 @@
         xmlns:local="clr-namespace:HappyBDay"
         mc:Ignorable="d"
         xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Мои контакты" Height="550" Width="800" ResizeMode="CanResizeWithGrip" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <!-- – Style for overall  ScrollViewer –-->
+        <Style x:Key="FavsScrollViewer" TargetType="{x:Type ScrollViewer}">
+            <Setter Property="OverridesDefaultStyle" Value="True"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ScrollViewer}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <ScrollContentPresenter Grid.Column="1"/>
+                            <ScrollBar Name="PART_VerticalScrollBar" Value="{TemplateBinding VerticalOffset}" Maximum="{TemplateBinding ScrollableHeight}" ViewportSize="{TemplateBinding ViewportHeight}" Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}"/>
+                            <ScrollBar Name="PART_HorizontalScrollBar" Orientation="Horizontal" Grid.Row="1" Grid.Column="1" Value="{TemplateBinding HorizontalOffset}"
+                                       Maximum="{TemplateBinding ScrollableWidth}" ViewportSize="{TemplateBinding ViewportWidth}"
+                                       Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="CenterCellStyle" TargetType="{x:Type DataGridCell}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type DataGridCell}">
+                        <Grid Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="linkStyleForFile" TargetType="{x:Type TextBlock}">
+            <Setter Property="Opacity" Value="0" />
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding ElementName=stackPanFile, Path=IsMouseOver}" Value="True">
+                    <Setter Property="Opacity" Value="1" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="linkStyle" TargetType="{x:Type TextBlock}" >
+            <Setter Property="Opacity" Value="0" />
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding ElementName=stackpanelka, Path=IsMouseOver}" Value="True">
+                    <Setter Property="Opacity" Value="1"/>
+                    <Setter Property="Height" Value="48"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- Шаблон для кнопок -->
+        <ControlTemplate TargetType="Button" x:Key="ButtonForMenu" >
+            <Border CornerRadius="25" BorderBrush="{TemplateBinding BorderBrush}" 
+                    BorderThickness="{TemplateBinding BorderThickness}" 
+                    Background="{TemplateBinding Background}" Height="40" Width="40">
+                <ContentControl HorizontalAlignment="Center" VerticalAlignment="Center" Content="{TemplateBinding Content}" Foreground="WhiteSmoke" FontFamily="Calibri" FontSize="20">
+                </ContentControl>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="BorderThickness" Value="1" />
+                    <Setter Property="BorderBrush" Value="Orange" />
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="BorderThickness" Value="2" />
+                    <Setter Property="BorderBrush" Value="Black" />
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+
+        <Style TargetType="Label">
+            <Setter Property="Foreground" Value="LightGray"/>
+        </Style>
+        
+    </Window.Resources>
     <Grid>
-        <Menu Height="25" VerticalAlignment="Top">
-            <MenuItem Header="Файл">
-                <MenuItem Header="Открыть" Command="{Binding OpenCommand}" />
-                <MenuItem Header="Сохранить" Command="{Binding SaveCommand}" />
+        <Menu Height="25" VerticalAlignment="Top" Background="#FF5682A6" FontFamily="calibri" FontSize="14">
+            <MenuItem Header="HBDay" Foreground="LightGray">
+                <MenuItem Header="Настройки" Foreground="Black"/>
+                <Separator />
+                <MenuItem Header="Выход" Foreground="Black"/>
+            </MenuItem>
+            <MenuItem Header="Данные" Foreground="LightGray">
+                <MenuItem Header="Открыть" Command="{Binding OpenCommand}" Foreground="Black" />
+                <MenuItem Header="Сохранить" Command="{Binding SaveCommand}" Foreground="Black" />
+            </MenuItem>
+            <MenuItem Header="Список" Foreground="LightGray">
+                <MenuItem Header="Добавить" Foreground="Black" Command="{Binding AddCommand}" >
+                    <MenuItem.Icon>
+                        <Image  Source="/Image/add.png"/>
+                        <!--Source="pack://application:,,,/HappyBDay;component/Image/add.png"-->
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Удалить"  Foreground="Black" Command="{Binding RemoveCommand}" CommandParameter="{Binding SelectedPerson}">
+                    <MenuItem.Icon>
+                        <Image Source="/Image/toggle_collapse.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Копировать" Foreground="Black" >
+                    <MenuItem.Icon>
+                        <Image Source="/Image/documents.png" />
+                    </MenuItem.Icon>
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:InvokeCommandAction Command="{Binding DoubleCommand}" CommandParameter="{Binding SelectedPerson}"  />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="Справка"  Foreground="LightGray">
+                <MenuItem Header="О программе" Foreground="Black" >
+                    <MenuItem.Icon>
+                        <Image Source="/Image/question_button.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
             </MenuItem>
         </Menu>
 
-        <ListBox Name="listPeople" HorizontalAlignment="Left" Margin="10,30,0,50" Width="222" 
+        <ListBox Name="listPeople" HorizontalAlignment="Left" Margin="0,25,0,55" Width="222" Foreground="Gray"
                  ItemsSource="{Binding People}" 
-                 SelectedItem="{Binding SelectedPerson}" Background="#FFE9F4F9">
+                 SelectedItem="{Binding SelectedPerson}" >
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid>
@@ -25,34 +142,98 @@
                             <ColumnDefinition />
                         </Grid.ColumnDefinitions>
                         <StackPanel Margin="5" Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center">
-                            <TextBlock Text="{Binding Path=Surname}" Foreground="#FF1B1919" FontSize="14"/>
-                            <TextBlock Text="{Binding Path=Name}" Foreground="#FF1B1919" FontSize="14" Margin="5,0,0,0" />
+                            <TextBlock Text="{Binding Path=Surname}" Foreground="Black" FontSize="14" FontFamily="Calibri"/>
+                            <TextBlock Text="{Binding Path=Name}" Foreground="Black" FontSize="14" FontFamily="Calibri" Margin="5,0,0,0" />
                         </StackPanel>
                     </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Grid Margin="237,30,10,50" Background="AliceBlue" DataContext="{Binding SelectedPerson}">
-            <Label Content="Выбранный пользователь:" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top"/>
-            <Label Content="Фамилия" HorizontalAlignment="Left" Margin="10,31,0,0" VerticalAlignment="Top"/>
-            <TextBox HorizontalAlignment="Left" Height="26" Margin="75,31,0,0" TextWrapping="Wrap" Text="{Binding Surname, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" VerticalAlignment="Top" Width="250"/>
-            <Label Content="Имя" HorizontalAlignment="Left" Margin="10,62,0,0" VerticalAlignment="Top"/>
-            <TextBox HorizontalAlignment="Left" Height="26" Margin="75,62,0,0" TextWrapping="Wrap" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="250"/>
-            <Label Content="Отчество" HorizontalAlignment="Left" Margin="10,93,0,0" VerticalAlignment="Top"/>
-            <TextBox HorizontalAlignment="Left" Height="26" Margin="75,93,0,0" TextWrapping="Wrap" Text="{Binding Patronymic, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="250"/>
-            <Label Content="Дата" HorizontalAlignment="Left" Margin="10,124,0,0" VerticalAlignment="Top"/>
-            <DatePicker HorizontalAlignment="Left" Margin="75,124,0,0" SelectedDate="{Binding  BDay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Height="26" Width="250"/>
-        </Grid>
 
-        <Button Name="addButton" Content="Add" Command="{Binding AddCommand}" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" Width="60" Height="35"/>
-        <Button Name="removeButton" Content="Remove" Command="{Binding RemoveCommand}" CommandParameter="{Binding SelectedPerson}" HorizontalAlignment="Left" Margin="75,0,0,10" VerticalAlignment="Bottom" Width="60" Height="35"/>
-        <Button Name="copyButton" Content="Copy" Margin="140,0,0,10" VerticalAlignment="Bottom" Height="35" HorizontalAlignment="Left" Width="76">
-            <i:Interaction.Triggers>
-                <i:EventTrigger EventName="MouseDoubleClick">
-                    <i:InvokeCommandAction Command="{Binding DoubleCommand}" CommandParameter="{Binding SelectedPerson}" />
-                </i:EventTrigger>
-            </i:Interaction.Triggers>
-        </Button>
+        <Grid Margin="227,30,0,55" Background="#FF646F7A" DataContext="{Binding SelectedPerson}">
+            <Label Content="Выбранный пользователь:" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top"/>
+            <Label Content="Фамилия:" HorizontalAlignment="Left" Margin="10,31,0,0" VerticalAlignment="Top"/>
+            <TextBox HorizontalAlignment="Left" Height="26" Margin="75,31,0,0" VerticalContentAlignment="Center" TextWrapping="NoWrap" 
+                     Text="{Binding Surname, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" VerticalAlignment="Top" Width="250">
+                <TextBox.Resources>
+                    <VisualBrush x:Key="HelpBrush" TileMode="FlipX" Stretch="None" AlignmentX="Left">
+                        <VisualBrush.Visual>
+                            <TextBlock FontStyle="Italic" Text="введите фамилию..." FontWeight="Normal" Background="#FFB9EAB9"/>
+                        </VisualBrush.Visual>
+                    </VisualBrush>
+                </TextBox.Resources>
+                <TextBox.Style>
+                    <Style TargetType="{x:Type TextBox}">
+                        <Style.Triggers>
+                            <Trigger Property="Text" Value="">
+                                <Setter Property="Background" Value="{StaticResource HelpBrush}"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
+            <Label Content="Имя:" HorizontalAlignment="Left" Margin="10,62,0,0" VerticalAlignment="Top"/>
+            <TextBox HorizontalAlignment="Left" Height="26" Margin="75,62,0,0" VerticalContentAlignment="Center" TextWrapping="NoWrap" 
+                     Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="250">
+                <TextBox.Resources>
+                    <VisualBrush x:Key="HelpBrush" TileMode="FlipX" Stretch="None" AlignmentX="Left">
+                        <VisualBrush.Visual>
+                            <TextBlock FontStyle="Italic" Text="введите имя..." FontWeight="Normal" Background="#FFB9EAB9" />
+                        </VisualBrush.Visual>
+                    </VisualBrush>
+                </TextBox.Resources>
+                <TextBox.Style>
+                    <Style TargetType="{x:Type TextBox}">
+                        <Style.Triggers>
+                            <Trigger Property="Text" Value="">
+                                <Setter Property="Background" Value="{StaticResource HelpBrush}"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
+            <Label Content="Отчество:" HorizontalAlignment="Left" Margin="10,93,0,0" VerticalAlignment="Top"/>
+            <TextBox HorizontalAlignment="Left" Height="26" Margin="75,93,0,0" VerticalContentAlignment="Center" TextWrapping="NoWrap" 
+                     Text="{Binding Patronymic, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="250">
+                <TextBox.Resources>
+                    <VisualBrush x:Key="HelpBrush" TileMode="FlipX" Stretch="None" AlignmentX="Left">
+                        <VisualBrush.Visual>
+                            <TextBlock FontStyle="Italic" Text="введите отчество..." FontWeight="Normal" Background="#FFB9EAB9" />
+                        </VisualBrush.Visual>
+                    </VisualBrush>
+                </TextBox.Resources>
+                <TextBox.Style>
+                    <Style TargetType="{x:Type TextBox}">
+                        <Style.Triggers>
+                            <Trigger Property="Text" Value="">
+                                <Setter Property="Background" Value="{StaticResource HelpBrush}"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
+            <Label Content="Дата:" HorizontalAlignment="Left" Margin="10,124,0,0" VerticalAlignment="Top"/>
+            <DatePicker HorizontalAlignment="Left" Margin="75,124,0,0" SelectedDate="{Binding  BDay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Height="26" Width="150"/>
+        </Grid>
+        
+
+        <Grid Height="50" VerticalAlignment="Bottom" Background="#6289a8">
+            <Button Name="addButton" Content="+" Command="{Binding AddCommand}" Background="#FF80C1F5" Template="{StaticResource ButtonForMenu}" 
+                HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Bottom" Width="50" Height="50"/>
+
+            <Button Name="removeButton" Content="-" Command="{Binding RemoveCommand}" CommandParameter="{Binding SelectedPerson}"
+                Background="#FF80C1F5" Template="{StaticResource ButtonForMenu}"
+                HorizontalAlignment="Left" Margin="65,0,0,0" VerticalAlignment="Bottom" Width="50" Height="50"/>
+
+            <Button Name="copyButton" Content="2x" Background="#FF80C1F5" Template="{StaticResource ButtonForMenu}"
+                Margin="120,0,0,0" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="50" Height="50">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseDoubleClick">
+                        <i:InvokeCommandAction Command="{Binding DoubleCommand}" CommandParameter="{Binding SelectedPerson}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
+        </Grid>
 
     </Grid>
 </Window>

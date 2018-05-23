@@ -1,15 +1,7 @@
-F:\Селяков В.А\Личное\Мои проекты\Оповещение ДР\HappyBDay\HappyBDay\bin\Debug\HappyBDay.exe
-F:\Селяков В.А\Личное\Мои проекты\Оповещение ДР\HappyBDay\HappyBDay\bin\Debug\HappyBDay.pdb
-F:\Селяков В.А\Личное\Мои проекты\Оповещение ДР\HappyBDay\HappyBDay\obj\Debug\HappyBDay.csprojResolveAssemblyReference.cache
 F:\Селяков В.А\Личное\Мои проекты\Оповещение ДР\HappyBDay\HappyBDay\obj\Debug\App.g.cs
-F:\Селяков В.А\Личное\Мои проекты\Оповещение ДР\HappyBDay\HappyBDay\obj\Debug\HappyBDay_MarkupCompile.cache
-F:\Селяков В.А\Личное\Мои проекты\Оповещение ДР\HappyBDay\HappyBDay\obj\Debug\HappyBDay_MarkupCompile.lref
-F:\Селяков В.А\Личное\Мои проекты\Оповещение ДР\HappyBDay\HappyBDay\obj\Debug\HappyBDay.g.resources
 F:\Селяков В.А\Личное\Мои проекты\Оповещение ДР\HappyBDay\HappyBDay\obj\Debug\HappyBDay.Properties.Resources.resources
 F:\Селяков В.А\Личное\Мои проекты\Оповещение ДР\HappyBDay\HappyBDay\obj\Debug\HappyBDay.csproj.GenerateResource.cache
 F:\Селяков В.А\Личное\Мои проекты\Оповещение ДР\HappyBDay\HappyBDay\obj\Debug\HappyBDay.csproj.CoreCompileInputs.cache
-F:\Селяков В.А\Личное\Мои проекты\Оповещение ДР\HappyBDay\HappyBDay\obj\Debug\HappyBDay.exe
-F:\Селяков В.А\Личное\Мои проекты\Оповещение ДР\HappyBDay\HappyBDay\obj\Debug\HappyBDay.pdb
 F:\Селяков В.А\Личное\Мои проекты\Оповещение ДР\HappyBDay\HappyBDay\obj\Debug\View\MainWindow.g.cs
 F:\Селяков В.А\Личное\Мои проекты\Оповещение ДР\HappyBDay\HappyBDay\obj\Debug\View\MainWindow.baml
 F:\Селяков В.А\Личное\Мои проекты\Оповещение ДР\HappyBDay\HappyBDay\bin\Debug\System.Windows.Interactivity.dll
@@ -24,3 +16,10 @@ F:\Селяков В.А\Личное\Мои проекты\Оповещение 
 F:\Селяков В.А\Личное\Мои проекты\Оповещение ДР\HappyBDay\HappyBDay\bin\Debug\zh-Hans\System.Windows.Interactivity.resources.dll
 F:\Селяков В.А\Личное\Мои проекты\Оповещение ДР\HappyBDay\HappyBDay\bin\Debug\zh-Hant\System.Windows.Interactivity.resources.dll
 F:\Селяков В.А\Личное\Мои проекты\Оповещение ДР\HappyBDay\HappyBDay\obj\Debug\HappyBDay.csproj.CopyComplete
+F:\Селяков В.А\Личное\Мои проекты\Оповещение ДР\HappyBDay\HappyBDay\bin\Debug\Мои люди.exe
+F:\Селяков В.А\Личное\Мои проекты\Оповещение ДР\HappyBDay\HappyBDay\bin\Debug\Мои люди.pdb
+F:\Селяков В.А\Личное\Мои проекты\Оповещение ДР\HappyBDay\HappyBDay\obj\Debug\Мои люди_MarkupCompile.cache
+F:\Селяков В.А\Личное\Мои проекты\Оповещение ДР\HappyBDay\HappyBDay\obj\Debug\Мои люди_MarkupCompile.lref
+F:\Селяков В.А\Личное\Мои проекты\Оповещение ДР\HappyBDay\HappyBDay\obj\Debug\Мои люди.g.resources
+F:\Селяков В.А\Личное\Мои проекты\Оповещение ДР\HappyBDay\HappyBDay\obj\Debug\Мои люди.exe
+F:\Селяков В.А\Личное\Мои проекты\Оповещение ДР\HappyBDay\HappyBDay\obj\Debug\Мои люди.pdb

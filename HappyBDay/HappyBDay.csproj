@@ -7,7 +7,7 @@
     <ProjectGuid>{991EE87B-CDC4-4AA1-9368-9286950D1F1C}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>HappyBDay</RootNamespace>
-    <AssemblyName>HappyBDay</AssemblyName>
+    <AssemblyName>Мои люди</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -110,6 +110,15 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\bin.png" />
+    <Resource Include="Image\box.png" />
+    <Resource Include="Image\documents.png" />
+    <Resource Include="Image\equalizer.png" />
+    <Resource Include="Image\question_button.png" />
+    <Resource Include="Image\search.png" />
+    <Resource Include="Image\toggle_expand — копия.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

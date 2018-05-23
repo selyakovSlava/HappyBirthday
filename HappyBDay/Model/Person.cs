@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
 
 namespace HappyBDay.Model
 {
@@ -15,7 +12,7 @@ namespace HappyBDay.Model
         private string _surname; // Фамилия.
         private string _name; // Имя.
         private string _patronymic; // Отчество.
-        private DateTime _bDay; // Дата рождения.
+        private DateTime _bDay = DateTime.Today; // Дата рождения.
 
         /// <summary>
         /// Конструктор по умолчанию.
